@@ -1,0 +1,20 @@
+﻿@model DogDays.Models.Dog
+@{
+    ViewBag.Title = "AddDog";
+}
+
+<h2>AddDog</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Dog Name</label>
+        @Html.TextBoxFor(m=>m.Name)
+    </div>
+
+    <div>
+        <input type="submit" />
+    </div>
+}
+
+

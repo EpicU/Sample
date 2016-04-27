@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DogDays.Models.Dog>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Dogs</h2>
+<a href="@Url.Action("AddDog")">Add a Dog</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Dog Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dog in Model)
+        {
+            <tr>
+                <td>@dog.DogId</td>
+                <td>@dog.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
