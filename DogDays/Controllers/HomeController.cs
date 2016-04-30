@@ -7,6 +7,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//Note: the name "User" in sql is a reserved word, if you choose to name you table "User", you need 
+//to escapte it like "Select * from [User]"
+
+//the alternative to this is to call it Users 
+
+//Content is also reserved
+
+
+
+
 namespace DogDays.Controllers
 {
     public class HomeController : Controller
