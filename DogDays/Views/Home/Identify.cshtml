@@ -1,0 +1,23 @@
+﻿@model DogDays.Models.SignupViewModel
+@{
+    ViewBag.Title = "Identify";
+}
+
+<h2>Identify</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>What is your Name?</label>
+        @Html.TextBoxFor(m=>m.Name)
+        <span class="text-danger">
+            @Html.ValidationMessageFor(m => m.Name)
+        </span>
+
+        
+    </div>
+
+    <div>
+        <input type="submit" />
+    </div>
+}

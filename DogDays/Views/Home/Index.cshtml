@@ -3,8 +3,15 @@
     ViewBag.Title = "Index";
 }
 
+<h1>Hello @ViewBag.Name</h1>
+
 <h2>List of Dogs</h2>
 <a href="@Url.Action("AddDog")">Add a Dog</a>
+
+<a href="@Url.Action("Identify")">Identify Yourself</a>
+
+<a href="@Url.Action("SignOut")">Forget Yourself</a>
+
 <table class="table table-striped">
     <thead>
         <tr>

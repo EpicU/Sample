@@ -15,6 +15,14 @@ namespace DogDays.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            var cookie = Request.Cookies["name"];
+            if (cookie == null)
+                ViewBag.Name = "(unknown)";
+            else
+                ViewBag.Name = cookie.Value;
+
+
+
                 var list = Conn.Query<Dog>("Select DogID, Name from Dog");
                 return View(list);
         }
@@ -40,7 +48,43 @@ namespace DogDays.Controllers
             return View("Index", list);
         }
 
+        public ActionResult Identify()
+        {
 
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Identify(SignupViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Name=="The Man")
+                {
+                    ModelState.AddModelError("Name", "No, there can only be one 'The man', and you are not it.");
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+
+
+                var cookie = new HttpCookie("name", model.Name);
+                cookie.Expires = DateTime.Now.AddYears(1);
+                Response.Cookies.Add(cookie);
+
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public ActionResult SignOut()
+        {
+            var c = new HttpCookie("name");
+            c.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(c);
+            return RedirectToAction("Index");
+        }
 
         public ActionResult AddDog()
         {
