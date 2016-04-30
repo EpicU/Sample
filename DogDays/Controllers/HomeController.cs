@@ -48,6 +48,13 @@ namespace DogDays.Controllers
             return View("Index", list);
         }
 
+        public ActionResult DogDetail(int dogID)
+        {
+            var dog = Conn.Query<Dog>("Select DogID, Name From Dog Where DogID=@DogID",
+                new { DogID = dogID }).Single();
+            return View(dog);
+        }
+
         public ActionResult Identify()
         {
 

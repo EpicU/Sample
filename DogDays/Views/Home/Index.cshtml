@@ -23,7 +23,7 @@
         @foreach (var dog in Model)
         {
             <tr>
-                <td>@dog.DogId</td>
+                <td><a href="@Url.Action("DogDetail", new { dogID = dog.DogId })">@dog.DogId</a></td>
                 <td>@dog.Name</td>
             </tr>
         }
